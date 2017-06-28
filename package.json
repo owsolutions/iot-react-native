@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "release": "cd android && ./gradlew assembleRelease",
+    "release": "npm run build:android && npm run copy-dist",
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "copy-dist": "mkdir -p dist && cp android/app/build/outputs/apk/app-release.apk dist/release.apk",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
