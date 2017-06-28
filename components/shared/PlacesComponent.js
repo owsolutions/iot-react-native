@@ -36,7 +36,7 @@ export class PlacesComponent extends Component {
         });
         
 
-        return times(2500, time => place()).map((x,index) => {x.key=index; return x;});
+        return times(5, time => place()).map((x,index) => {x.key=index; return x;});
     }
 
     render () {

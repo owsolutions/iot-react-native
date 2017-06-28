@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native';
+import theme from '../../themes/default';
 
 export function PlaceRow (props = {}) {
     let place = props.place;
@@ -10,9 +11,10 @@ export function PlaceRow (props = {}) {
             height:90,
             margin:5
         },
-        text: {
+        placename: {
             fontSize: 18,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            color: theme.colors.default
         },
         view: {
             flex: 1,
@@ -29,7 +31,7 @@ export function PlaceRow (props = {}) {
                     <Image source={place.image} style={styles.image} />
                 </View>
                 <View style={{width: 200, height: 50}}>
-                    <Text style={styles.text}>{place.name || 'Unknown place'}</Text>
+                    <Text style={styles.placename}>{place.name || 'Unknown place'}</Text>
                     <Text>Temperature: {place.temperature}</Text>
                     <Text>Lights: {place.outputs}</Text>
                     <Text>Active devices: {place.inputs}</Text>
