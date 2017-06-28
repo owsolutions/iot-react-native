@@ -29,7 +29,7 @@ export class PlacesComponent extends Component {
             name: getName(),
             image: getImage(),
             temperature: [
-                "33.4"
+                (random(200 , 600) * 0.1).toPrecision(4)
             ],
             inputs: random(9),
             outputs: random(9)

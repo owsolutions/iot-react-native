@@ -6,11 +6,13 @@ export function PlaceRow (props = {}) {
 
     let styles = StyleSheet.create({
         image: {
-            width:100, 
-            height:100
+            width:90, 
+            height:90,
+            margin:5
         },
         text: {
-            fontSize: 18
+            fontSize: 18,
+            fontWeight: 'bold'
         },
         view: {
             flex: 1,
