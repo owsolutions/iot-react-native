@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PlacesComponent } from './components/shared/places';
+import { PlacesComponent } from './components/shared/PlacesComponent';
 import {
   AppRegistry,
   StyleSheet,

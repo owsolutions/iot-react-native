@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableHighlight } from 'react-native';
 
-export function PlaceRow () {
+export function PlaceRow (props = {}) {
+    let place = props.place;
 
     let styles = StyleSheet.create({
         image: {
@@ -9,23 +10,30 @@ export function PlaceRow () {
             height:100
         },
         text: {
-            
+            fontSize: 18
         },
         view: {
             flex: 1,
             flexDirection: 'row',
-            padding:10
+            padding:10,
+            borderBottomColor: 'silver',
+            borderBottomWidth: 1
         }
     });
     return (
-        <View style={styles.view}>
-            <View style={{width: 120, height: 100 }}>
-                <Image source={require('./images/conference.png')} style={styles.image} />
+        <TouchableHighlight>
+            <View style={styles.view}>
+                <View style={{width: 120, height: 100 }}>
+                    <Image source={place.image} style={styles.image} />
+                </View>
+                <View style={{width: 200, height: 50}}>
+                    <Text style={styles.text}>{place.name || 'Unknown place'}</Text>
+                    <Text>Temperature: {place.temperature}</Text>
+                    <Text>Lights: {place.outputs}</Text>
+                    <Text>Active devices: {place.inputs}</Text>
+                </View>
             </View>
-            <View style={{width: 200, height: 50}}>
-                <Text style={styles.text}>This is a place!</Text>
-            </View>
-        </View>
+        </TouchableHighlight>
     );
 
 
