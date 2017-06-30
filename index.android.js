@@ -8,6 +8,10 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
+import {
+  StackNavigator,
+} from 'react-navigation';
+
 
 function Box (props) {
   let box = {
@@ -34,7 +38,7 @@ function Box (props) {
     }
   }
   return (
-    <TouchableOpacity style={props.position && props.position === 'left' ? styles.boxLeft : styles.boxRight}>
+    <TouchableOpacity onPress={props.onPress} style={props.position && props.position === 'left' ? styles.boxLeft : styles.boxRight}>
       <View >
         <Text style={styles.text}>
           {props.title}
@@ -50,11 +54,14 @@ let styles = {
   }
 } 
 export default class smarthomeapp extends Component {
+
+  
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View>
         <View style={styles.container}>
-          <Box position='left' title='Places' />
+          <Box position='left' title='Places' onPress={() => navigate('Places')} />
           <Box position='right' title='Rooms' />
         </View>
       </View>
@@ -62,4 +69,14 @@ export default class smarthomeapp extends Component {
   }
 }
 
-AppRegistry.registerComponent('smarthomeapp', () => smarthomeapp);
+const App = StackNavigator({
+   home: {
+     screen: smarthomeapp
+   },
+   Places: {
+     screen: PlacesComponent
+   }
+});
+
+
+AppRegistry.registerComponent('smarthomeapp', () => App);
