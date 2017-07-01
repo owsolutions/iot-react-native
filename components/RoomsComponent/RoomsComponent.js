@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import { merge } from 'lodash';
 
+
+import { store } from '../store';
+
+
 function Box (props) {
 
   let styles = {
@@ -68,7 +72,7 @@ function Box (props) {
     <TouchableOpacity onPress={props.onPress} style={styles.box}>
       <View >
         <Text style={styles.text}>
-          {props.title}
+          {props.name}
         </Text>
         <Image style={styles.image} source={icons[icon][iconName]} />
         <Text style={styles.quickInfo}>5 Accessories Installed</Text>
@@ -77,9 +81,36 @@ function Box (props) {
     </TouchableOpacity>
   );
 }
+
+
+import { mockRooms } from './RoomsMock';
+
 export class RoomsComponent extends Component {
     
+    constructor () {
+        super();
+    }
+
+    componentWillMount () {
+        this.setState({
+            places: []
+        })
+    }
+    componentDidMount () {
+        mockRooms.map((room, index) => {
+            store.dispatch({
+                type: 'UPDATE_PLACE',
+                place: Object.assign(room, {key: index})
+            });
+        });
+    }
+
     render () {
+        store.subscribe(() => {
+            this.setState({
+                places: store.getState().places
+            });
+        });
         let styles = {
             container: {
                 flexDirection: 'row',
@@ -88,10 +119,13 @@ export class RoomsComponent extends Component {
         }
         return (
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
-                <Box title='Bedroom' icon='bed' isactive={true} onPress={() => this.props.navigate('Places')} />
-                <Box title='Kitchen' icon='kitchen' />
-                <Box title='Living Room' icon='livingroom' />
-                <Box title='Parking lot' />
+                {
+                    this.state.places.map(place => {
+                        return (
+                            <Box name={place.name} icon={place.icon} key={place.key} isactive={true} />
+                        );
+                    })
+                }
             </ScrollView>
         );
     }

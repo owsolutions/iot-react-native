@@ -1,44 +1,17 @@
 import React, { Component } from 'react';
-import { RoomAccessoriesComponent } from './components/RoomAccessoriesComponent/RoomAccessoriesComponent';
 import { PlacesComponent } from './components/PlacesComponent/PlacesComponent';
-import { RoomsComponent } from './components/RoomsComponent/RoomsComponent';
-import { TemperatureAdjustComponent } from './components/TemperatureAdjust/TemperatureAdjust'
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  TouchableOpacity,
-  ScrollView
-} from 'react-native';
-import {
-  StackNavigator,
-} from 'react-navigation';
-
- 
-export default class smarthomeapp extends Component {
-
-  render() {
-    const { navigate } = this.props.navigation;
-    return (
-      <ScrollView>
-        <RoomsComponent navigate={navigate} />
-        <RoomAccessoriesComponent />
-        <TemperatureAdjustComponent  />
-      </ScrollView>
-    );
-  }
-}
+import { IndexComponent } from './components/Index';
+import { AppRegistry } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { store } from './components/store';
 
 const App = StackNavigator({
    home: {
-     screen: smarthomeapp
+     screen: IndexComponent
    },
    Places: {
      screen: PlacesComponent
    }
 });
-
 
 AppRegistry.registerComponent('smarthomeapp', () => App);
