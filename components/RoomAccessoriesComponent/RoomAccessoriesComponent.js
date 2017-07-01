@@ -41,9 +41,7 @@ export class RoomAccessoriesComponent extends Component {
         <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={style.accessories}>
           {
             accessories.map(x => <AccessoriesComponent value={x.value} name={x.name} isactive={x.isactive} />)
-            
           }
-          
         </ScrollView>
       </View>
     )
