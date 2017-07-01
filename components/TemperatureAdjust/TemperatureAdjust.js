@@ -20,6 +20,7 @@ export class TemperatureAdjustComponent extends Component {
         backgroundColor: 'white',
         margin: 5,
         padding: 15,
+        marginBottom:10
       },
       text: {
         fontSize: 21
@@ -31,13 +32,11 @@ export class TemperatureAdjustComponent extends Component {
         fontSize:90,
         textAlign: 'center'
       }
-
     };
 
     return (
       <View style={style.container}>
         <Text style={style.text}>AC Bedroom</Text>
-
         <Text style={style.temperature}>
           {(this.state.temperature)}
         </Text>

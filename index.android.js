@@ -23,10 +23,9 @@ export default class smarthomeapp extends Component {
     const { navigate } = this.props.navigation;
     return (
       <ScrollView>
-        <RoomsComponent />
+        <RoomsComponent navigate={navigate} />
         <RoomAccessoriesComponent />
-        <TemperatureAdjustComponent />
-        
+        <TemperatureAdjustComponent  />
       </ScrollView>
     );
   }

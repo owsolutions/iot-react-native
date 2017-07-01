@@ -87,8 +87,8 @@ export class RoomsComponent extends Component {
             }
         }
         return (
-            <ScrollView horizontal={true} style={styles.container}>
-                <Box title='Bedroom' icon='bed' isactive={true} />
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
+                <Box title='Bedroom' icon='bed' isactive={true} onPress={() => this.props.navigate('Places')} />
                 <Box title='Kitchen' icon='kitchen' />
                 <Box title='Living Room' icon='livingroom' />
                 <Box title='Parking lot' />

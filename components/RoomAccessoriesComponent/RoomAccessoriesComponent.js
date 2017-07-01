@@ -21,8 +21,7 @@ export class RoomAccessoriesComponent extends Component {
         fontWeight: 'bold'
       },
       accessories: {
-        flexDirection: 'row',
-        paddingBottom:12
+        flexDirection: 'row'
       }
 
     };
@@ -31,7 +30,7 @@ export class RoomAccessoriesComponent extends Component {
       <View style={style.container}>
         <Text style={style.text}>Room Accessories</Text>
 
-        <ScrollView  horizontal={true} style={style.accessories}>
+        <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={style.accessories}>
           <AccessoriesComponent value="On" name="AC" isactive={true} />
           <AccessoriesComponent value="Locked" name="Door"/>
           <AccessoriesComponent value="Off" name="Fan" />
