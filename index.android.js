@@ -1,53 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+import { RoomAccessoriesComponent } from './components/RoomAccessoriesComponent/RoomAccessoriesComponent';
+import { PlacesComponent } from './components/PlacesComponent/PlacesComponent';
+import { RoomsComponent } from './components/RoomsComponent/RoomsComponent';
+import { TemperatureAdjustComponent } from './components/TemperatureAdjust/TemperatureAdjust'
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight,
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
+import {
+  StackNavigator,
+} from 'react-navigation';
 
+ 
 export default class smarthomeapp extends Component {
+
   render() {
+    const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          ASDSDASD
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <ScrollView>
+        <RoomsComponent navigate={navigate} />
+        <RoomAccessoriesComponent />
+        <TemperatureAdjustComponent  />
+      </ScrollView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+const App = StackNavigator({
+   home: {
+     screen: smarthomeapp
+   },
+   Places: {
+     screen: PlacesComponent
+   }
 });
 
-AppRegistry.registerComponent('smarthomeapp', () => smarthomeapp);
+
+AppRegistry.registerComponent('smarthomeapp', () => App);
