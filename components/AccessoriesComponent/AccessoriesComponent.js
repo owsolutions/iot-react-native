@@ -32,10 +32,11 @@ export class AccessoriesComponent extends Component {
 
     let styleActive = {
       container: {
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       },
       name: {
         fontWeight: 'bold',
+        color: 'gray'
       }
     }
     if (this.props.isactive) {
@@ -43,7 +44,7 @@ export class AccessoriesComponent extends Component {
     }
     
     return (
-      <View style={style.container}>
+      <View  style={style.container}>
         <Text style={style.value}>{this.props.value}</Text>
         <Text style={style.name}>{this.props.name}</Text>
       </View>
