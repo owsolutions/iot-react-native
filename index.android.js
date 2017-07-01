@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { PlacesComponent } from './components/shared/PlacesComponent';
+import { AccessoriesComponent } from './components/AccessoriesComponent/AccessoriesComponent';
+import { PlacesComponent } from './components/PlacesComponent/PlacesComponent';
 import {
   AppRegistry,
   StyleSheet,
@@ -15,26 +16,29 @@ import {
 
 function Box (props) {
   let box = {
-    backgroundColor: 'rgba(0,0,255,0.3)',
+    backgroundColor: 'white',
     flex: 1,
-    margin:2.5,
+    margin:5,
     height:150,
-    padding:10
+    padding:20,
+    borderRadius: 20
   };
 
   let styles = {
 
     boxRight: {
       ...box,
-      marginLeft:1.25
+      marginLeft: box.margin / 2
     },
     boxLeft: {
       ...box,
-      marginRight: 1.25
+      marginRight: box.margin / 2
     },
     text: {
-      fontSize: 22,
-      textAlign: 'center'
+      color: 'rgb(74, 109,249)',
+      fontSize: 24,
+      fontWeight: 'bold',
+      textAlign: 'left'
     }
   }
   return (
@@ -52,18 +56,65 @@ let styles = {
   container: {
     flexDirection: 'row'
   }
-} 
+}
+
+
+
+
+class RoomAccessoriesComponent extends Component {
+
+  render () {
+
+    let style = {
+      container: {
+        borderRadius:15,
+        backgroundColor: 'white',
+        margin: 5,
+        padding: 15,
+        backgroundColor: 'rgb(39, 85, 249)'
+      },
+      text: {
+        color: 'white',
+        fontSize: 21,
+        fontWeight: 'bold'
+      },
+      accessories: {
+        flexDirection: 'row'
+      }
+
+    };
+
+    return (
+      <View style={style.container}>
+        <Text style={style.text}>Room Accessories</Text>
+
+        <View style={style.accessories}>
+          <AccessoriesComponent value="On" name="AC" isactive={true} />
+          <AccessoriesComponent value="Locked" name="Door"/>
+          <AccessoriesComponent value="Off" name="Fan" />
+        </View>
+      </View>
+    )
+
+  }
+}
+
+
+
 export default class smarthomeapp extends Component {
 
-  
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View>
         <View style={styles.container}>
-          <Box position='left' title='Places' onPress={() => navigate('Places')} />
-          <Box position='right' title='Rooms' />
+          <Box position='left' title='Bedroom' onPress={() => navigate('Places')} />
+          <Box position='right' title='Living Room' />
         </View>
+
+        <RoomAccessoriesComponent>
+
+        </RoomAccessoriesComponent>
       </View>
     );
   }
