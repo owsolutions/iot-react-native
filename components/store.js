@@ -7,11 +7,19 @@ function placesReducer (places = [] , action) {
         places = places.concat(action.place);
     }
     return places;
-    
+}
+
+function accessoriesReducer (accessories = [], action) {
+    switch (action.type) {
+    case 'UPDATE_ACCESSORY':
+        accessories = accessories.concat(action.accessory);
+    }
+    return accessories;
 }
 
 const reducers = combineReducers({
-  places: placesReducer
+  places: placesReducer,
+  accessories: accessoriesReducer
 });
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 export const store = createStoreWithMiddleware(reducers);
