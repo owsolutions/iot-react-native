@@ -22,11 +22,12 @@ export default class smarthomeapp extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View>
+      <ScrollView>
         <RoomsComponent />
         <RoomAccessoriesComponent />
         <TemperatureAdjustComponent />
-      </View>
+        
+      </ScrollView>
     );
   }
 }

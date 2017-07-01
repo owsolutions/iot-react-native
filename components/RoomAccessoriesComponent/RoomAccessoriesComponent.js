@@ -13,6 +13,7 @@ export class RoomAccessoriesComponent extends Component {
         margin: 5,
         padding: 15,
         backgroundColor: 'rgb(39, 85, 249)'
+        
       },
       text: {
         color: 'white',
@@ -20,7 +21,8 @@ export class RoomAccessoriesComponent extends Component {
         fontWeight: 'bold'
       },
       accessories: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingBottom:12
       }
 
     };
