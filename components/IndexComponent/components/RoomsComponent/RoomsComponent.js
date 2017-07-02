@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
-import { store } from '../store';
+import { store } from '../../../store';
 import { RoomBox } from './RoomBox';
-import { mockRooms } from './RoomsMock';
 
 export class RoomsComponent extends Component {
     
@@ -31,9 +30,9 @@ export class RoomsComponent extends Component {
         return (
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
                 {
-                    this.state.places.map(place => {
+                    this.state.places.map((place, index) => {
                         return (
-                            <RoomBox room={place} />
+                            <RoomBox room={place} key={index} />
                         );
                     })
                 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PlacesComponent } from './components/PlacesComponent/PlacesComponent';
-import { IndexComponent } from './components/Index';
+import { IndexComponent } from './components/IndexComponent/IndexComponent';
 import { AppRegistry } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { store } from './components/store';
