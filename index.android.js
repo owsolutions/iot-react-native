@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { PlacesComponent } from './components/PlacesComponent/PlacesComponent';
 import { IndexComponent } from './components/IndexComponent/IndexComponent';
 import { AppRegistry } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 import { store } from './components/store';
 
-const App = StackNavigator({
+const App = TabNavigator({
    home: {
      screen: IndexComponent
    },
@@ -13,5 +13,7 @@ const App = StackNavigator({
      screen: PlacesComponent
    }
 });
+
+export default PlacesComponent;
 
 AppRegistry.registerComponent('smarthomeapp', () => App);
