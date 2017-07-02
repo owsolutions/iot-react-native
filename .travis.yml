@@ -11,10 +11,7 @@ cache:
 env:
   - NODE_ENV='test'
 script:
-  - cp env.example.js env.js
-  - npm run lint
   - npm test
-  - npm run bundle:ios
 matrix:
   include:
     - language: android
