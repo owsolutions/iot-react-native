@@ -19,5 +19,13 @@ export let mockAccessories = [
     {
         name: 'Lights',
         value: 'Off'
+    },
+    {
+        name: 'Back Lamp',
+        value: 'On'
+    },
+    {
+        name: 'Front Lamp',
+        value: 'Off'
     }
 ];
