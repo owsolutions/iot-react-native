@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
+import React from 'react';
 import { merge } from 'lodash';
+import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 
-function Box (props) {
-
+export function RoomBox (props) {
+  let place = props.room;
   let styles = {
     box: {
-        width: 225,
+        width: 180,
         backgroundColor: 'white',
         flex: 1,
         margin:5,
@@ -57,10 +57,10 @@ function Box (props) {
   };
 
   const defaultIcon = require('./images/bed-active.png');
-  const icon = props.icon ? props.icon : '~default';
-  const iconName = props.isactive ? 'active' : 'deactive';
+  const icon = place.icon ? place.icon : '~default';
+  const iconName = place.isactive ? 'active' : 'deactive';
 
-  if (props.isactive) {
+  if (place.isactive) {
     styles = merge(styles , activeStyles);
   }
 
@@ -68,7 +68,7 @@ function Box (props) {
     <TouchableOpacity onPress={props.onPress} style={styles.box}>
       <View >
         <Text style={styles.text}>
-          {props.title}
+          {place.name}
         </Text>
         <Image style={styles.image} source={icons[icon][iconName]} />
         <Text style={styles.quickInfo}>5 Accessories Installed</Text>
@@ -76,23 +76,4 @@ function Box (props) {
       </View>
     </TouchableOpacity>
   );
-}
-export class RoomsComponent extends Component {
-    
-    render () {
-        let styles = {
-            container: {
-                flexDirection: 'row',
-                paddingBottom: 10
-            }
-        }
-        return (
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
-                <Box title='Bedroom' icon='bed' isactive={true} onPress={() => this.props.navigate('Places')} />
-                <Box title='Kitchen' icon='kitchen' />
-                <Box title='Living Room' icon='livingroom' />
-                <Box title='Parking lot' />
-            </ScrollView>
-        );
-    }
 }
