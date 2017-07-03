@@ -6,7 +6,7 @@ export function RoomBox (props) {
   let place = props.room;
   let styles = {
     box: {
-        width: 150,
+        width: 180,
         backgroundColor: 'white',
         flex: 1,
         margin:5,
