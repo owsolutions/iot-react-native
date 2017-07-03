@@ -1,6 +1,6 @@
 {
   "name": "smarthomeapp",
-  "version": "0.0.1",
+  "version": "0.1.1rc",
   "private": true,
   "scripts": {
     "release": "npm run build:android && npm run copy-dist",
