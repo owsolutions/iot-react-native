@@ -3,8 +3,6 @@ import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import { RoomBox } from './RoomBox';
 import { connect } from 'react-redux';
  
-
-
 class RoomsComponent extends Component {
 
     constructor () {

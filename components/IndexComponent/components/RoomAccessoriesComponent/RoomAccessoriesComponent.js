@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {ScrollView, View, Text} from 'react-native';
 import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesComponent';
-import * as mocks from '../../../mocks/RoomAccessoriesMock';
-export class RoomAccessoriesComponent extends Component {
+import { connect } from 'react-redux';
+
+class RoomAccessoriesComponent extends Component {
 
     render () {
 
-      let accessories = mocks.mockAccessories;
+      let accessories = this.props.accessories;
       let styles = {
         container: {
           borderRadius:15,
@@ -38,6 +39,11 @@ export class RoomAccessoriesComponent extends Component {
           </ScrollView>
         </View>
       )
-
   }
 }
+
+export default connect(
+    state => ({
+        accessories: state.accessories
+    })
+)(RoomAccessoriesComponent);

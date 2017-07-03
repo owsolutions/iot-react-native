@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import RoomsComponent from './components/RoomsComponent/RoomsComponent';
-import { TemperatureAdjustComponent } from './components/TemperatureAdjust/TemperatureAdjust'
-import { RoomAccessoriesComponent } from './components/RoomAccessoriesComponent/RoomAccessoriesComponent';
+import { TemperatureAdjustComponent } from './components/TemperatureAdjust/TemperatureAdjust';
+import RoomAccessoriesComponent from './components/RoomAccessoriesComponent/RoomAccessoriesComponent';
 import { store } from '../store';
 
 export class IndexComponent extends Component {
