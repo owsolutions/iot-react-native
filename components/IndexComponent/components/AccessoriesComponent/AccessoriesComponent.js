@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text,
-  View,
-  TouchableOpacity
+  View
 } from 'react-native';
 import { merge } from 'lodash';
 
@@ -45,12 +44,10 @@ export class AccessoriesComponent extends Component {
     }
     
     return (
-      <TouchableOpacity>
-        <View  style={style.container}>
-          <Text style={style.value}>{this.props.value}</Text>
-          <Text style={style.name}>{this.props.name}</Text>
-        </View>
-      </TouchableOpacity>
+      <View  style={style.container}>
+        <Text style={style.value}>{this.props.value}</Text>
+        <Text style={style.name}>{this.props.name}</Text>
+      </View>
     );
   }
 }
