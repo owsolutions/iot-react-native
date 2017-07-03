@@ -6,7 +6,7 @@ any endpoint, you will be able to connect it into your exsiting IoT fundation.
 This application is on a heavy development.
 
 
-# Demo
+# Demo and downloads
 
 You can always download the latest `apk` file from github releases:
 
