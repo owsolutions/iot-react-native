@@ -6,6 +6,9 @@ import { TabNavigator, StackNavigator, addNavigationHelpers } from 'react-naviga
 import { store } from './components/store';
 import { Provider, connect } from "react-redux";
 
+import { getPlaces } from './components/actions'
+getPlaces();
+
 const Routes = {
    home: {
      screen: IndexComponent
