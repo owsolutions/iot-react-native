@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
 import RoomsComponent from './components/RoomsComponent/RoomsComponent';
 import { TemperatureAdjustComponent } from './components/TemperatureAdjust/TemperatureAdjust';
+import DoubleBridgeAdjustComponent from './components/DoubleBridgeAdjust/DoubleBridgeAdjust';
 import RoomAccessoriesComponent from './components/RoomAccessoriesComponent/RoomAccessoriesComponent';
 
 export class IndexComponent extends Component {
@@ -12,7 +13,7 @@ export class IndexComponent extends Component {
       <ScrollView>
         <RoomsComponent navigate={navigate} />
         <RoomAccessoriesComponent />
-        <TemperatureAdjustComponent  />
+        <DoubleBridgeAdjustComponent  />
       </ScrollView>
     );
   }
