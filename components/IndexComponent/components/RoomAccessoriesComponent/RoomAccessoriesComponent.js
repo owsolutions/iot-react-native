@@ -2,17 +2,28 @@ import React, { Component } from 'react';
 import {ScrollView, View, Text} from 'react-native';
 import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesComponent';
 import { connect } from 'react-redux';
-
+import { store } from '../../../store';
+ 
 class RoomAccessoriesComponent extends Component {
 
-
+  accessoryChange (accessory) {
+    store.dispatch({type: 'ACTIVATE_ACCESSORY' , accessory})
+  }
   accessories() {
     const { places, accessories } = this.props;
     const currentPlace = places.find(place => place.isactive);
-    
+    const mapCallback = (x, index) => (
+      <AccessoriesComponent 
+        key={index} 
+        value={x.value} 
+        name={x.name}
+        onPress={() => this.accessoryChange(x)}
+        isactive={x.isactive} />
+    );
+
     return accessories
       .filter(x => x.place == currentPlace.key)
-      .map((x, index) => <AccessoriesComponent key={index} value={x.value} name={x.name} isactive={x.isactive} />);
+      .map(mapCallback);
   }
   render () {
 

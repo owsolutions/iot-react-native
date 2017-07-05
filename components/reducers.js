@@ -24,6 +24,16 @@ export function accessoriesReducer (accessories = [], action) {
     switch (action.type) {
     case 'UPDATE_ACCESSORY':
         accessories = accessories.concat(action.accessory);
+    case 'ACTIVATE_ACCESSORY':
+        accessories = accessories.map(x => {
+            if (x.key === action.accessory.key) {
+                x.isactive = true;
+            } else {
+                x.isactive = false;
+            }
+            return x;
+        });
+
     }
     return accessories;
 }
