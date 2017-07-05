@@ -1,43 +1,71 @@
 import React, { Component } from 'react';
 import {ScrollView, View, Text} from 'react-native';
 import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesComponent';
-import * as mocks from '../../../mocks/RoomAccessoriesMock';
-export class RoomAccessoriesComponent extends Component {
+import { connect } from 'react-redux';
+import { store } from '../../../store';
+ 
+class RoomAccessoriesComponent extends Component {
 
-    render () {
+  accessoryChange (accessory) {
+    store.dispatch({type: 'ACTIVATE_ACCESSORY' , accessory})
+  }
+  accessories() {
+    const { places, accessories } = this.props;
+    const currentPlace = places.find(place => place.isactive);
+    const mapCallback = (x, index) => (
+      <AccessoriesComponent 
+        key={index} 
+        value={x.value} 
+        name={x.name}
+        onPress={() => this.accessoryChange(x)}
+        isactive={x.isactive} />
+    );
 
-      let accessories = mocks.mockAccessories;
-      let styles = {
-        container: {
-          borderRadius:15,
-          backgroundColor: 'white',
-          margin: 5,
-          padding: 15,
-          backgroundColor: 'rgb(39, 85, 249)'        
-        },
+    return accessories
+      .filter(x => x.place == currentPlace.key)
+      .map(mapCallback);
+  }
+  render () {
 
-        text: {
-          color: 'white',
-          fontSize: 21,
-          fontWeight: 'bold'
-        },
-        accessories: {
-          flexDirection: 'row'
-        }
-      };
+    let styles = {
+      container: {
+        borderRadius:15,
+        backgroundColor: 'white',
+        margin: 5,
+        padding: 15,
+        backgroundColor: 'rgb(39, 85, 249)'        
+      },
+
+      text: {
+        color: 'white',
+        fontSize: 21,
+        fontWeight: 'bold'
+      },
+      accessories: {
+        flexDirection: 'row'
+      }
+    };
 
 
-      return (
-        <View style={styles.container}>
-          <Text style={styles.text}>Room Accessories</Text>
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>Room Accessories</Text>
 
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true} style={styles.accessories}>
-            {
-              accessories.map((x, index) => <AccessoriesComponent key={index} value={x.value} name={x.name} isactive={x.isactive} />)
-            }
-          </ScrollView>
-        </View>
-      )
+        <ScrollView 
+          showsHorizontalScrollIndicator={false}
+          horizontal={true} 
+          style={styles.accessories}>
+          { this.accessories() }
+        </ScrollView>
 
+      </View>
+    )
   }
 }
+
+export default connect(
+    state => ({
+        accessories: state.accessories,
+        places: state.places
+    })
+)(RoomAccessoriesComponent);

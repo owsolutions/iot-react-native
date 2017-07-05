@@ -1,31 +1,45 @@
 export let mockAccessories = [
     {
+        key: 0,
         name: 'AC',
         value: 'On',
-        isactive: true
+        isactive: true,
+        place: 0
     },
     {
+        key: 1,
         name: 'Door',
-        value: 'Locked'
+        value: 'Locked',
+        place: 1,
     },
     {
+        key: 2,
         name: 'Fan',
-        value: 'Off'
+        value: 'Off',
+        place: 1
     },
     {
+        key:3,
         name: 'TV',
-        value: 'On'
+        value: 'On',
+        place: 1
     },
     {
+        key:4,
         name: 'Lights',
-        value: 'Off'
+        value: 'Off',
+        place: 2
     },
     {
+        key:5,
         name: 'Back Lamp',
-        value: 'On'
+        value: 'On',
+        place: 3
     },
     {
+        key:6,
         name: 'Front Lamp',
-        value: 'Off'
+        value: 'Off',
+        place: 4
     }
 ];
