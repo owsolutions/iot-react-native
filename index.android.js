@@ -19,7 +19,7 @@ const Routes = {
    }
 };
 
-const AppNavigator = StackNavigator(Routes);
+const AppNavigator = TabNavigator(Routes);
 
 @connect(state => ({
     nav: state.nav

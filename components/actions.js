@@ -13,7 +13,6 @@ export function getPlaces () {
 
 export function fetchAccessories () {    
     mockAccessories.map((accessory, index) => {
-        console.log('-> ' , accessory);
         store.dispatch({
             type: 'UPDATE_ACCESSORY',
             accessory

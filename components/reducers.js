@@ -7,6 +7,15 @@ export function placesReducer (places = [] , action) {
     switch (action.type) {
     case 'UPDATE_PLACE':
         places = places.concat(action.place);
+    case 'ACTIVATE_PLACE':
+        places = places.map(place => {
+            if (place.key === action.place.key) {
+                place.isactive = true;
+            } else {
+                place.isactive = false;
+            }
+            return place;
+        });
     }
     return places;
 }

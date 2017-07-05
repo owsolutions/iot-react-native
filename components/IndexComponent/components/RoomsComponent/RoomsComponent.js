@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import { RoomBox } from './RoomBox';
 import { connect } from 'react-redux';
+import { store } from '../../../store';
  
 class RoomsComponent extends Component {
 
-    constructor () {
-        super();
-        
+
+
+    activateRoom (place) {
+        store.dispatch({type: 'ACTIVATE_PLACE' , place});
     }
     render () {
 
@@ -22,7 +24,7 @@ class RoomsComponent extends Component {
                 {
                     this.props.places.map((place, index) => {
                         return (
-                            <RoomBox room={place} key={index} />
+                        <RoomBox onPress={() => this.activateRoom(place)} room={place} key={index} />
                         );
                     })
                 }
