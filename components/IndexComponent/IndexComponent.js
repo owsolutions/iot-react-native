@@ -13,6 +13,7 @@ export class IndexComponent extends Component {
       <ScrollView>
         <RoomsComponent navigate={navigate} />
         <RoomAccessoriesComponent />
+        <TemperatureAdjustComponent  />
         <DoubleBridgeAdjustComponent  />
       </ScrollView>
     );
