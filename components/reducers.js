@@ -22,6 +22,9 @@ export function placesReducer (places = [] , action) {
 
 export function accessoriesReducer (accessories = [], action) {
     switch (action.type) {
+
+    case 'RESET_ACCESSORY':
+        return accessories.map(x => {x.isactive = false; return x;});
     case 'UPDATE_ACCESSORY':
         accessories = accessories.concat(action.accessory);
     case 'ACTIVATE_ACCESSORY':

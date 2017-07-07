@@ -5,11 +5,9 @@ import { connect } from 'react-redux';
 import { store } from '../../../store';
  
 class RoomsComponent extends Component {
-
-
-
     activateRoom (place) {
         store.dispatch({type: 'ACTIVATE_PLACE' , place});
+        store.dispatch({type: 'RESET_ACCESSORY'});
     }
     render () {
 
