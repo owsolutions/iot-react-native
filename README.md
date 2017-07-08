@@ -3,8 +3,13 @@
 This is a small mobile application built on top of react-native, and aims to control small houses and solutions. We are planning to make this indepedent of any solution, and by connecting 
 any endpoint, you will be able to connect it into your exsiting IoT fundation. 
 
-This application is on a heavy development.
+This application is under heavy development.
 
+## Features
+
+* Single I/O Bridge ( lamp, door ) , and analog adjustment ( like temperature )
+* Complete redux integration
+* Defining rooms and associate inner accessories
 
 # Demo and downloads
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {ScrollView, View, Text, Slider} from 'react-native';
 import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesComponent';
-import style from './TemperatureAdjustStyle';
+import style from './TemperatureComponentStyle';
 
 export default function TemperatureAdjustComponent ({accessory, updateValue}) {
     return (

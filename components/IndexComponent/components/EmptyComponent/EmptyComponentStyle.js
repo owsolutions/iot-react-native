@@ -1,7 +1,7 @@
 export default {
     container: {
-          justifyContent: 'center',
-    alignItems: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     heading: {
         textAlign: 'center',

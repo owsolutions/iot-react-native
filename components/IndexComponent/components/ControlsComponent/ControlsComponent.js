@@ -3,8 +3,8 @@ import {ScrollView, View, Text} from 'react-native';
 import { connect } from 'react-redux';
 import { store } from '../../../store';
 import styles from './ControlsComponentStyle';
-import TemperatureAdjustComponent from '../TemperatureAdjust/TemperatureAdjust';
-import SingleBridgeAdjustComponent from '../SingleBridgeAdjust/SingleBridgeAdjust';
+import TemperatureComponent from '../TemperatureComponent/TemperatureComponent';
+import SingleBridgeComponent from '../SingleBridgeComponent/SingleBridgeComponent';
 
 class ControlsComponent extends Component {
 
@@ -26,9 +26,9 @@ class ControlsComponent extends Component {
 
       switch (accessory.type.key) {
         case 'temperature':
-          return <TemperatureAdjustComponent accessory={accessory} updateValue={this.updateValue} />
+          return <TemperatureComponent accessory={accessory} updateValue={this.updateValue} />
         case 'single':
-          return <SingleBridgeAdjustComponent accessory={accessory} updateValue={this.updateValue} />
+          return <SingleBridgeComponent accessory={accessory} updateValue={this.updateValue} />
       }
     };
     

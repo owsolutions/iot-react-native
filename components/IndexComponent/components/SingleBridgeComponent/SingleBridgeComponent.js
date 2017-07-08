@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {ScrollView, View, Text, Switch, Image} from 'react-native';
-import style from './SingleBridgeAdjustStyle';
+import style from './SingleBridgeComponentStyle';
 
-export default function SingleBridgeAdjustComponent ({accessory, updateValue}) {
+export default function SingleBridgeComponent ({accessory, updateValue}) {
   return (
     <View style={style.container}>
       <Text style={style.text}>{accessory.name}</Text>
