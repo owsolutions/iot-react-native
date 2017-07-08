@@ -1,78 +1,25 @@
 import React from 'react';
 import { merge } from 'lodash';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
+import icons from './RoomIcons';
+import style, { activeStyles } from './RoomsComponentStyle';
 
-export function RoomBox (props) {
-  let place = props.room;
-  let styles = {
-    box: {
-        width: 180,
-        backgroundColor: 'white',
-        flex: 1,
-        margin:5,
-        padding:20,
-        borderRadius: 20
-    },
-    text: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      textAlign: 'left'
-    },
-    image: {
-        marginTop: 10
-    },
-    quickInfo: {
-        marginTop: 10,
-        fontWeight: 'bold',
-        color: '#567182'
-    },
-    accessoriesInfo: {
-        color: '#798E9C'
-    }
-  }
-
-  const activeStyles = {
-      text: {
-          color: 'rgb(74, 109,249)'
-      }
-  }
-
-  const icons = {
-      '~default': {
-          'active': require('./images/default-active.png'),
-          'deactive': require('./images/default.png')
-      },
-      'bed': {
-          'active': require('./images/bed-active.png'),
-          'deactive': require('./images/bed.png')
-      },
-      'livingroom': {
-          'active': require('./images/livingroom-active.png'),
-          'deactive': require('./images/livingroom.png')
-      },
-      'kitchen': {
-          'active': require('./images/kitchen-active.png'),
-          'deactive': require('./images/kitchen.png')
-      }
-  };
-
+export function RoomBox ({room, roomStatus, onPress}) {
+  
   const defaultIcon = require('./images/bed-active.png');
-  const icon = place.icon ? place.icon : '~default';
-  const iconName = place.isactive ? 'active' : 'deactive';
-
-  if (place.isactive) {
-    styles = merge(styles , activeStyles);
-  }
+  const icon = room.icon ? room.icon : '~default';
+  const iconName = room.isactive ? 'active' : 'deactive';
+  const styles = room.isactive ? merge({}, style, activeStyles) : style;
 
   return (
-    <TouchableOpacity onPress={props.onPress} style={styles.box}>
+    <TouchableOpacity onPress={onPress} style={styles.box}>
       <View >
         <Text style={styles.text}>
-          {place.name}
+          {room.name}
         </Text>
         <Image style={styles.image} source={icons[icon][iconName]} />
-        <Text style={styles.quickInfo}>5 Accessories Installed</Text>
-        <Text style={styles.accessoriesInfo}>AC is on, TV is on, Lights is on</Text>
+        <Text style={styles.quickInfo}>{roomStatus.length} Accessor{roomStatus.length === 1 ? 'y' : 'ies'} Installed</Text>
+        <Text style={styles.accessoriesInfo}>{ roomStatus.join(', ') }</Text>
       </View>
     </TouchableOpacity>
   );
