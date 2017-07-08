@@ -4,6 +4,8 @@ import { RoomBox } from './RoomBox';
 import { connect } from 'react-redux';
 import { store } from '../../../store';
 import styles from './RoomsComponentStyle';
+import {normalaizeValue} from '../../../../services/CommonFunctions';
+
 
 class RoomsComponent extends Component {
     activateRoom (place) {
@@ -12,7 +14,7 @@ class RoomsComponent extends Component {
     }
 
     previewRoomStatus (room, accessories) {
-        return accessories.filter(x => x.place === room.key).map(x => `${x.name} is ${x.value}`);
+        return accessories.filter(x => x.place === room.key).map(x => `${x.name} is ${normalaizeValue(x.value)}`);
     }
 
     countAccessoriesInRoom (room, accessories) {
