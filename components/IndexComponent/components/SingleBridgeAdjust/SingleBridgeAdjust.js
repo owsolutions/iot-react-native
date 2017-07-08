@@ -9,7 +9,7 @@ export default function SingleBridgeAdjustComponent ({accessory, updateValue}) {
       <View style={style.inner}>
         <View style={{flex:1, flexDirection:'row', paddingTop:20}}>
           <Text>{accessory.value}</Text>
-          <Image source={accessory.value ? require('./images/cooler-active.png') : require('./images/cooler-deactive.png')} />
+          <Image source={accessory.value ? require('./images/lamp-active.png') : require('./images/lamp-deactive.png')} />
         </View>
         <View style={{flex:1, paddingRight:30}}>
           <Switch

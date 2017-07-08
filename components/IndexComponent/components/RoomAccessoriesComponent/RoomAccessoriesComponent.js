@@ -4,15 +4,23 @@ import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesCompone
 import { connect } from 'react-redux';
 import { store } from '../../../store';
 import styles from './RoomAccessoriesComponentStyle';
+import EmptyComponent from '../EmptyComponent/EmptyComponent';
 
 class RoomAccessoriesComponent extends Component {
 
   accessoryChange (accessory) {
     store.dispatch({type: 'ACTIVATE_ACCESSORY' , accessory})
   }
-  accessories() {
-    const { places, accessories } = this.props;
+
+  accessories () {
+    const { places } = this.props;
     const currentPlace = places.find(place => place.isactive);
+    return this.props.accessories
+      .filter(x => x.place == currentPlace.key);
+  }
+
+  accessoriesElements () {
+    const { accessories } = this.props;
     const mapCallback = (x, index) => (
       <AccessoriesComponent 
         key={index} 
@@ -21,20 +29,25 @@ class RoomAccessoriesComponent extends Component {
         onPress={() => this.accessoryChange(x)}
         isactive={x.isactive} />
     );
-    return accessories
-      .filter(x => x.place == currentPlace.key)
-      .map(mapCallback);
+    return this.accessories().map(mapCallback);
   }
   render () {
-    return (
-      <View style={styles.container}>
+
+    const accessoriesView = (
+      <View>
         <Text style={styles.text}>Room Accessories</Text>
-        <ScrollView 
+          <ScrollView 
           showsHorizontalScrollIndicator={false}
           horizontal={true}
           style={styles.accessories}>
-          { this.accessories() }
+          {this.accessoriesElements()}
         </ScrollView>
+      </View>
+    );
+
+    return (
+      <View style={styles.container}>
+        { this.accessories().length === 0 ? <EmptyComponent /> : accessoriesView}
       </View>
     )
   }

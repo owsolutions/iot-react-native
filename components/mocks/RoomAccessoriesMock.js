@@ -1,66 +1,35 @@
-export let mockAccessories = [
-    {
-        key: 0,
-        name: 'AC',
-        value: 33.5,
-        isactive: true,
-        place: 0,
-        type: {
-            key: 'temperature'
-        }
-    },
-    {
-        key: 1,
-        name: 'Door',
-        value: true,
-        place: 1,
-        type: {
-            key: 'single'
-        }
-    },
-    {
-        key: 2,
-        name: 'Fan',
-        value: false,
-        place: 1,
-        type: {
-            key: 'single'
-        }
-    },
-    {
-        key:3,
-        name: 'TV',
-        value: true,
-        place: 1,
-        type: {
-            key: 'single'
-        }
-    },
-    {
-        key:4,
-        name: 'Lights',
-        value: false,
-        place: 2,
-        type: {
-            key: 'single'
-        }
-    },
-    {
-        key:5,
-        name: 'Back Lamp',
-        value: false,
-        place: 3,
-        type: {
-            key: 'single'
-        }
-    },
-    {
-        key:6,
-        name: 'Front Lamp',
-        value: false,
-        place: 4,
-        type: {
-            key: 'single'
+import { sample, random, times } from 'lodash';
+
+export let mockAccessories = times(10, () => {
+    return mockGenerator();
+})
+.map(($el, index) => {
+    $el.key = index;
+    return $el;
+});
+
+function mockGenerator () {
+    function byType () {
+        switch (random(1,2)) {
+            case 1:
+                return {
+                    value: random(5,50),
+                    type: {
+                        key: 'temperature'
+                    }
+                }
+            case 2:
+                return {
+                    value: sample([false, true]),
+                    type: {
+                        key: 'single'
+                    }
+                }
         }
     }
-];
+    return {
+        name: sample(['Front Lamp' , 'Back Lamp', 'Waterpump', 'Fan', 'Green Light' , 'Red Light', 'Night Dim']),
+        place: random(1,4),
+        ...byType()
+    };
+}
