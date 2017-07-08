@@ -3,28 +3,31 @@ import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import { RoomBox } from './RoomBox';
 import { connect } from 'react-redux';
 import { store } from '../../../store';
- 
+import styles from './RoomsComponentStyle';
+
 class RoomsComponent extends Component {
     activateRoom (place) {
         store.dispatch({type: 'ACTIVATE_PLACE' , place});
         store.dispatch({type: 'RESET_ACCESSORY'});
     }
+
+    previewRoomStatus (room, accessories) {
+        return accessories.filter(x => x.place === room.key).map(x => `${x.name} is ${x.value}`);
+    }
+
+    countAccessoriesInRoom (room, accessories) {
+        return accessories.reduce((count, x) => x.place === room.key ? count + 1 : count, 0);
+    }
+
     render () {
-        let styles = {
-            container: {
-                flexDirection: 'row',
-                paddingBottom: 10
-            }
-        }
+        const callee = (place, index) => <RoomBox onPress={() => this.activateRoom(place)} room={place} key={index} roomStatus={this.previewRoomStatus(place, this.props.accessories)} />;
+
         return (
-            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.container}>
-                {
-                    this.props.places.map((place, index) => {
-                        return (
-                        <RoomBox onPress={() => this.activateRoom(place)} room={place} key={index} />
-                        );
-                    })
-                }
+            <ScrollView 
+                horizontal={true} 
+                showsHorizontalScrollIndicator={false} 
+                style={styles.container}>
+                { this.props.places.map(callee)}
             </ScrollView>
         );
     }
@@ -32,6 +35,7 @@ class RoomsComponent extends Component {
 
 export default connect(
     state => ({
-        places: state.places
+        places: state.places,
+        accessories: state.accessories
     })
 )(RoomsComponent);

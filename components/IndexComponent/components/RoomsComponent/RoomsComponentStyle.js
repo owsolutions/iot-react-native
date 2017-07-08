@@ -22,7 +22,13 @@ export default {
     },
     accessoriesInfo: {
         color: '#798E9C'
+    },
+    
+    container: {
+        flexDirection: 'row',
+        paddingBottom: 10
     }
+        
 };
 
 export const activeStyles = {

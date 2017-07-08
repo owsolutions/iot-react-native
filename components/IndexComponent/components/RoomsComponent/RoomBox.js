@@ -4,23 +4,22 @@ import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import icons from './RoomIcons';
 import style, { activeStyles } from './RoomsComponentStyle';
 
-export function RoomBox (props) {
-  let place = props.room;
-
+export function RoomBox ({room, roomStatus, onPress}) {
+  
   const defaultIcon = require('./images/bed-active.png');
-  const icon = place.icon ? place.icon : '~default';
-  const iconName = place.isactive ? 'active' : 'deactive';
-  const styles = place.isactive ? merge({}, style, activeStyles) : style;
+  const icon = room.icon ? room.icon : '~default';
+  const iconName = room.isactive ? 'active' : 'deactive';
+  const styles = room.isactive ? merge({}, style, activeStyles) : style;
 
   return (
-    <TouchableOpacity onPress={props.onPress} style={styles.box}>
+    <TouchableOpacity onPress={onPress} style={styles.box}>
       <View >
         <Text style={styles.text}>
-          {place.name}
+          {room.name}
         </Text>
         <Image style={styles.image} source={icons[icon][iconName]} />
-        <Text style={styles.quickInfo}>5 Accessories Installed</Text>
-        <Text style={styles.accessoriesInfo}>AC is on, TV is on, Lights is on</Text>
+        <Text style={styles.quickInfo}>{roomStatus.length} Accessor{roomStatus.length === 1 ? 'y' : 'ies'} Installed</Text>
+        <Text style={styles.accessoriesInfo}>{ roomStatus.join(', ') }</Text>
       </View>
     </TouchableOpacity>
   );
