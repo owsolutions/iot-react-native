@@ -22,7 +22,14 @@ export function placesReducer (places = [] , action) {
 
 export function accessoriesReducer (accessories = [], action) {
     switch (action.type) {
-
+    case 'UPDATE_ACCESSORY_VALUE':
+        return accessories.map(x => { 
+            if (x.key === action.accessory.key) {
+                x.value = action.accessory.value;
+            }
+            return x;
+        });
+    break;
     case 'RESET_ACCESSORY':
         return accessories.map(x => {x.isactive = false; return x;});
     case 'UPDATE_ACCESSORY':

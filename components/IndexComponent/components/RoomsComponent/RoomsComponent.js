@@ -10,7 +10,6 @@ class RoomsComponent extends Component {
         store.dispatch({type: 'RESET_ACCESSORY'});
     }
     render () {
-
         let styles = {
             container: {
                 flexDirection: 'row',

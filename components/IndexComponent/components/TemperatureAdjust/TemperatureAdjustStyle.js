@@ -16,11 +16,5 @@ export default {
     temperature: {
         fontSize:90,
         textAlign: 'center'
-    },
-    inner: {
-        flexDirection: 'row',
-    },
-    switch: {
-        marginBottom:30
     }
-}
+};

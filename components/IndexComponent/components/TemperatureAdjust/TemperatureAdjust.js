@@ -1,54 +1,27 @@
 import React, { Component } from 'react';
 import {ScrollView, View, Text, Slider} from 'react-native';
 import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesComponent';
-
+import style from './TemperatureAdjustStyle';
 export class TemperatureAdjustComponent extends Component {
 
-  constructor () {
-    super();
-    this.state = {
-      temperature : 0
-    };
-  }
-
   render () {
-
-    let style = {
-      container: {
-        marginTop:10,
-        borderRadius:15,
-        backgroundColor: 'white',
-        margin: 5,
-        padding: 15,
-        marginBottom:10
-      },
-      text: {
-        fontSize: 21
-      },
-      accessories: {
-        flexDirection: 'row'
-      },
-      temperature: {
-        fontSize:90,
-        textAlign: 'center'
-      }
-    };
-
+    const { accessory, updateValue } = this.props;
     return (
       <View style={style.container}>
         <Text style={style.text}>AC Bedroom</Text>
         <Text style={style.temperature}>
-          {(this.state.temperature)}
+          {accessory.value}
         </Text>
         <Slider 
           minimumValue={10}
           step={0.5}
+          value={accessory.value}
           maximumValue={60}
           onValueChange={(value) => {
-          this.setState({temperature: (value)})
-        }} />
+            console.log("Value: " , value);
+            updateValue(accessory, value)
+          }} />
       </View>
     )
-
   }
 }

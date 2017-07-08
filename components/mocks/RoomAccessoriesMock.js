@@ -2,7 +2,7 @@ export let mockAccessories = [
     {
         key: 0,
         name: 'AC',
-        value: 'On',
+        value: 33.5,
         isactive: true,
         place: 0,
         type: {
@@ -12,7 +12,7 @@ export let mockAccessories = [
     {
         key: 1,
         name: 'Door',
-        value: 'Locked',
+        value: true,
         place: 1,
         type: {
             key: 'single'
@@ -21,7 +21,7 @@ export let mockAccessories = [
     {
         key: 2,
         name: 'Fan',
-        value: 'Off',
+        value: false,
         place: 1,
         type: {
             key: 'single'
@@ -30,7 +30,7 @@ export let mockAccessories = [
     {
         key:3,
         name: 'TV',
-        value: 'On',
+        value: true,
         place: 1,
         type: {
             key: 'single'
@@ -39,7 +39,7 @@ export let mockAccessories = [
     {
         key:4,
         name: 'Lights',
-        value: 'Off',
+        value: false,
         place: 2,
         type: {
             key: 'single'
@@ -48,7 +48,7 @@ export let mockAccessories = [
     {
         key:5,
         name: 'Back Lamp',
-        value: 'On',
+        value: false,
         place: 3,
         type: {
             key: 'single'
@@ -57,7 +57,7 @@ export let mockAccessories = [
     {
         key:6,
         name: 'Front Lamp',
-        value: 'Off',
+        value: false,
         place: 4,
         type: {
             key: 'single'

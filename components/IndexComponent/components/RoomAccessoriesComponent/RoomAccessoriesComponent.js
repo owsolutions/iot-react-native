@@ -53,7 +53,7 @@ class RoomAccessoriesComponent extends Component {
 
         <ScrollView 
           showsHorizontalScrollIndicator={false}
-          horizontal={true} 
+          horizontal={true}
           style={styles.accessories}>
           { this.accessories() }
         </ScrollView>
