@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {ScrollView, View, Text, Slider} from 'react-native';
 import { AccessoriesComponent } from '../AccessoriesComponent/AccessoriesComponent';
 import style from './TemperatureAdjustStyle';
-export class TemperatureAdjustComponent extends Component {
 
-  render () {
-    const { accessory, updateValue } = this.props;
+export default function TemperatureAdjustComponent ({accessory, updateValue}) {
     return (
       <View style={style.container}>
         <Text style={style.text}>AC Bedroom</Text>
@@ -18,10 +16,8 @@ export class TemperatureAdjustComponent extends Component {
           value={accessory.value}
           maximumValue={60}
           onValueChange={(value) => {
-            console.log("Value: " , value);
             updateValue(accessory, value)
           }} />
       </View>
-    )
-  }
+    );
 }

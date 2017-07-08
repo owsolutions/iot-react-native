@@ -3,7 +3,7 @@ import {ScrollView, View, Text} from 'react-native';
 import { connect } from 'react-redux';
 import { store } from '../../../store';
 import styles from './ControlsComponentStyle';
-import { TemperatureAdjustComponent } from '../TemperatureAdjust/TemperatureAdjust';
+import TemperatureAdjustComponent from '../TemperatureAdjust/TemperatureAdjust';
 import SingleBridgeAdjustComponent from '../SingleBridgeAdjust/SingleBridgeAdjust';
 
 class ControlsComponent extends Component {
