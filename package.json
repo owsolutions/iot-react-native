@@ -16,6 +16,8 @@
     "npm": "^5.0.4",
     "react": "16.0.0-alpha.12",
     "react-native": "0.45.1",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-qrcode": "^0.2.3",
     "react-native-slider": "^0.10.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.5",
