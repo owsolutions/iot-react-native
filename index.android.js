@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PlacesComponent } from './components/PlacesComponent/PlacesComponent';
 import { IndexComponent } from './components/IndexComponent/IndexComponent';
+import QRComponent from './components/QRComponent/QRComponent';
 import { AppRegistry } from 'react-native';
 import { TabNavigator, StackNavigator, addNavigationHelpers } from 'react-navigation';
 import { store } from './components/store';
@@ -16,6 +17,9 @@ const Routes = {
    },
    Places: {
      screen: PlacesComponent
+   },
+   QR: {
+       screen: QRComponent
    }
 };
 
