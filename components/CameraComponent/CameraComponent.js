@@ -6,27 +6,46 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View
+  View,
+  Alert
 } from 'react-native';
 import Camera from 'react-native-camera';
 
 export default class CameraComponent extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
-        </Camera>
-      </View>
-    );
+
+    constructor () {
+        super();
+        this.state = {
+            text: 'capture',
+            count: 0
+        }
+    }
+    onBarCodeRead(e) {
+        Alert.alert("Took!");
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Camera
+                    onBarCodeRead={(e) => Alert.alert(JSON.stringify(e))}
+                    ref={(cam) => {
+                        this.camera = cam;
+                    }}
+                    style={styles.preview}
+        />
+            </View>
+        );
   }
 
   takePicture() {
+      const count = this.state.count;
+      this.setState({
+          count: 1 + this.state.count
+      })
+      if ( count == 5) {
+          Alert.alert("Count is 5!");
+      }
     const options = {};
     //options.location = ...
     this.camera.capture({metadata: options})
