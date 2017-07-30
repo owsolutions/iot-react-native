@@ -8,8 +8,8 @@
     "copy-dist": "mkdir -p dist && cp android/app/build/outputs/apk/app-release.apk dist/release.apk",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "build-with-docker-debug": "docker run -t -i -v $(pwd):/workspace -v ~/.gradle/:/home/user/.gradle/ -w /workspace -e LOCAL_USER_ID=`id -u $USER` adambene/react-native-android /bin/sh -c \"cd android && ./gradlew --stacktrace assembleDebug\"",
-    "build-with-docker-release": "docker run -t -i -v $(pwd):/workspace -v ~/.gradle/:/home/user/.gradle/ -w /workspace -e LOCAL_USER_ID=`id -u $USER` adambene/react-native-android /bin/sh -c \"cd android && ./gradlew --stacktrace assembleRelease\""
+    "docker:build:debug": "docker run -t -i -v $(pwd):/workspace -v ~/.gradle/:/home/user/.gradle/ -w /workspace -e LOCAL_USER_ID=`id -u $USER` adambene/react-native-android /bin/sh -c \"cd android && ./gradlew --stacktrace assembleDebug\"",
+    "docker:build:release": "docker run -t -i -v $(pwd):/workspace -v ~/.gradle/:/home/user/.gradle/ -w /workspace -e LOCAL_USER_ID=`id -u $USER` adambene/react-native-android /bin/sh -c \"cd android && ./gradlew --stacktrace assembleRelease\""
   },
   "dependencies": {
     "babel-jest": "^20.0.3",
