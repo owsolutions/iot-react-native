@@ -1,3 +1,7 @@
+## Visit us https://pixelplux.com
+
+We are inviting you for visiting our commerical projects: https://pixelplux.com
+
 # Smart App react native
 
 This is a small mobile application built on top of react-native, and aims to control small houses and solutions. We are planning to make this indepedent of any solution, and by connecting 
